@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/AutomatedTestingTraining.iml" filepath="$PROJECT_DIR$/.idea/AutomatedTestingTraining.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Task_1_GitFirst/Task_1_GitFirst.iml" filepath="$PROJECT_DIR$/Task_1_GitFirst/Task_1_GitFirst.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Task_2_Java_Fundamentals/Task_2_Java_Fundamentals.iml" filepath="$PROJECT_DIR$/Task_2_Java_Fundamentals/Task_2_Java_Fundamentals.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Task_3_Java_Classes/Task_3_Java_Classes.iml" filepath="$PROJECT_DIR$/Task_3_Java_Classes/Task_3_Java_Classes.iml" />
+    </modules>
+  </component>
+</project>
