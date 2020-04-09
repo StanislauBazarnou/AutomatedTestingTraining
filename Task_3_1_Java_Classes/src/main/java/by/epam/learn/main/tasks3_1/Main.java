@@ -1,5 +1,4 @@
-package by.epam.learn.main.tasks3_1.1_Java_Classes.src.main.java.by.epam.learn.main.tasks3.1;
-//        Task_2_Java_Fundamentals.src.main.java.by.epam.learn.main.task2;
+package by.epam.learn.main.tasks3_1;
 
 public class Main {
     public static void main(String[] args) {

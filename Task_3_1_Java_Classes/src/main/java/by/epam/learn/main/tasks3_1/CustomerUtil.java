@@ -1,8 +1,6 @@
 package by.epam.learn.main.tasks3_1;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Scanner;
+import java.util.*;
 
 public class CustomerUtil {
 
@@ -11,22 +9,28 @@ public class CustomerUtil {
         Comparator<Customer> customersSurnameComparator = Comparator.comparing(Customer::getSurname);
         Arrays.sort(customers, customersSurnameComparator);
 
-        for (int i = 0; i < customers.length; i++) {
-            System.out.println(customers[i]);
+        for (Customer customer : customers) {
+            System.out.println(customer);
         }
     }
 
     public static void creditCardNumberSearch(Customer[] customers) {
-        Scanner inputInterval = new Scanner(System.in);
-        int startOfInterval = inputInterval.nextInt();
-        int endOfInterval = inputInterval.nextInt();
-//        inputInterval.close();
+        InputUtil.input();
+
+        List<Customer> creditCardsInInterval = new ArrayList();
 
         for (int i = 0; i < customers.length; i++) {
-                if (startOfInterval <= customers[i].getCreditCardNumber() && customers[i].getCreditCardNumber() <= endOfInterval) {
-                    System.out.println(customers[i]);
-                }
+            if (InputUtil.getStartOfInterval() <= customers[i].getCreditCardNumber() && customers[i].getCreditCardNumber() <= InputUtil.getEndOfInterval()) {
+                creditCardsInInterval.add(customers[i]);
+            }
         }
-//            System.out.println("There are no customers in this interval");
+
+        if (creditCardsInInterval.size() > 0) {
+            for (int i = 0; i < creditCardsInInterval.size(); i++) {
+                System.out.println(creditCardsInInterval.get(i));
+            }
+        } else {
+            System.out.println("In this interval " + creditCardsInInterval.size() + " customers");
+        }
     }
 }
