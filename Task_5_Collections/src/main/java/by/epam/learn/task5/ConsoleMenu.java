@@ -1,23 +1,22 @@
-package appliances;
+package by.epam.learn.task5;
+
+import by.epam.learn.task5.model.ElectricAppliance;
+import by.epam.learn.task5.util.ApplianceUtil;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleMenu {
 
-    static void printConsoleMenu() {
-        String[] consoleMenu = {
-                "Please, choose from the following options:",
-                "1. Calculate the current power consumption",
-                "2. Sort appliances by power",
-                "3. Search for appliances by power range"
-        };
-        for (String console : consoleMenu) {
-            System.out.println(console);
-        }
+    void printConsoleMenu() {
+        String consoleMenu = "Please, choose from the following options:" +
+                "\n1. Calculate the current power consumption" +
+                "\n2. Sort appliances by power" +
+                "\n3. Search for appliances by power range";
+        System.out.println(consoleMenu);
     }
 
-    static int inputtedNumberByUser() {
+    int inputtedNumberByUser() {
         Scanner scanner = new Scanner(System.in);
         int inputNumber = scanner.nextInt();
         while (inputNumber < 1 || inputNumber > 3) {
@@ -27,7 +26,7 @@ public class ConsoleMenu {
         return inputNumber;
     }
 
-    static void yesOrNo(List<ElectricAppliance> appliances) {
+    void yesOrNo(List<ElectricAppliance> appliances) {
         System.out.println("\nWould you like to proceed? y/n");
         Scanner scanner = new Scanner(System.in);
         String yesOrNoInput = scanner.nextLine();
@@ -42,9 +41,8 @@ public class ConsoleMenu {
         }
     }
 
-    static void launchMethodBasedOnUserInput(List<ElectricAppliance> appliances) {
+    void launchMethodBasedOnUserInput(List<ElectricAppliance> appliances) {
         printConsoleMenu();
-        Scanner scanner = new Scanner(System.in);
         switch (inputtedNumberByUser()) {
             case (1):
                 ApplianceUtil.currentPowerConsumption(appliances);
@@ -56,6 +54,7 @@ public class ConsoleMenu {
                 break;
             case (3):
                 System.out.println("Please specify the value you want to start the search with");
+                Scanner scanner = new Scanner(System.in);
                 int fromWattage = scanner.nextInt();
                 System.out.println("Up to what value are you looking for?");
                 int upToWattage = scanner.nextInt();

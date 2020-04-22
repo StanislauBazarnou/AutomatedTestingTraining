@@ -1,4 +1,4 @@
-package appliances;
+package by.epam.learn.task5.model;
 
 import java.util.Objects;
 

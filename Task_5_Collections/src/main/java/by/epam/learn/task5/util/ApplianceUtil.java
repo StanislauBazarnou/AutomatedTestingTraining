@@ -1,4 +1,6 @@
-package appliances;
+package by.epam.learn.task5.util;
+
+import by.epam.learn.task5.model.ElectricAppliance;
 
 import java.util.Comparator;
 import java.util.List;
