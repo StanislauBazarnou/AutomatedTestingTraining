@@ -8,59 +8,58 @@ import java.util.Scanner;
 
 public class ConsoleMenu {
 
-    void printConsoleMenu() {
-        String consoleMenu = "Please, choose from the following options:" +
+    Scanner scanner = new Scanner(System.in);
+
+    private void printConsoleMenu() {
+        String consoleMenu = "\nPlease, choose from the following options:" +
+                "\n0. Exit" +
                 "\n1. Calculate the current power consumption" +
                 "\n2. Sort appliances by power" +
                 "\n3. Search for appliances by power range";
         System.out.println(consoleMenu);
     }
 
-    int inputtedNumberByUser() {
-        Scanner scanner = new Scanner(System.in);
-        int inputNumber = scanner.nextInt();
-        while (inputNumber < 1 || inputNumber > 3) {
-            System.out.println("Please, check your input value and try again");
-            inputNumber = scanner.nextInt();
-        }
-        return inputNumber;
+    private int readInput() {
+        do {
+            while (!scanner.hasNextInt()) {
+                String input = scanner.next();
+                System.out.printf("\"%s\" is not a valid input\n", input);
+            }
+        } while (!scanner.hasNextInt());
+
+        return scanner.nextInt();
     }
 
-    void yesOrNo(List<ElectricAppliance> appliances) {
-        System.out.println("\nWould you like to proceed? y/n");
-        Scanner scanner = new Scanner(System.in);
-        String yesOrNoInput = scanner.nextLine();
-        if (yesOrNoInput.equalsIgnoreCase("Y")) {
-            launchMethodBasedOnUserInput(appliances);
-        } else if (yesOrNoInput.equalsIgnoreCase("N")) {
-            System.out.println("Have a nice day! Bye!");
-            scanner.close();
-        } else {
-            System.out.println("Sorry, I didn't catch that. Please answer y/n");
-            yesOrNo(appliances);
-        }
-    }
-
-    void launchMethodBasedOnUserInput(List<ElectricAppliance> appliances) {
+    protected void proceedInput(List<ElectricAppliance> appliances) {
         printConsoleMenu();
-        switch (inputtedNumberByUser()) {
+        ApplianceUtil consumption = new ApplianceUtil();
+        ApplianceUtil sort = new ApplianceUtil();
+        ApplianceUtil search = new ApplianceUtil();
+
+        switch (readInput()) {
+            case (0):
+                System.out.println("Have a nice day! Bye!");
+                scanner.close();
+                break;
             case (1):
-                ApplianceUtil.currentPowerConsumption(appliances);
-                yesOrNo(appliances);
+                consumption.currentPowerConsumption(appliances);
+                proceedInput(appliances);
                 break;
             case (2):
-                ApplianceUtil.sortAppliancesByPower(appliances);
-                yesOrNo(appliances);
+                sort.sortAppliancesByPower(appliances);
+                proceedInput(appliances);
                 break;
             case (3):
                 System.out.println("Please specify the value you want to start the search with");
-                Scanner scanner = new Scanner(System.in);
                 int fromWattage = scanner.nextInt();
                 System.out.println("Up to what value are you looking for?");
                 int upToWattage = scanner.nextInt();
-                ApplianceUtil.searchForApplianceByPowerRange(appliances, fromWattage, upToWattage);
-                yesOrNo(appliances);
+                search.searchForApplianceByPowerRange(appliances, fromWattage, upToWattage);
+                proceedInput(appliances);
                 break;
+            default:
+                System.out.println("Sorry, I didn't catch that. Please, check your input value and try again");
+                proceedInput(appliances);
         }
     }
 }

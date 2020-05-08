@@ -1,8 +1,6 @@
 package by.epam.learn.task5.model;
 
-import java.util.Objects;
-
-public class ElectricAppliance implements PowerSocket {
+public abstract class ElectricAppliance implements PowerSocket {
     private String name;
     private int wattage;
     private boolean on;
@@ -37,31 +35,6 @@ public class ElectricAppliance implements PowerSocket {
         this.on = on;
     }
 
-    public boolean connectedToElectricPowerGrid() {
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "ElectricAppliance{" +
-                "name='" + name + '\'' +
-                ", wattage=" + wattage +
-                ", on=" + on +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ElectricAppliance appliance = (ElectricAppliance) o;
-        return wattage == appliance.wattage &&
-                on == appliance.on &&
-                Objects.equals(name, appliance.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, wattage, on);
+    public void isConnected(boolean on) {
     }
 }

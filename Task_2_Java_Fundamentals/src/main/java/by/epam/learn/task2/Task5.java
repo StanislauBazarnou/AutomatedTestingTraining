@@ -1,38 +1,43 @@
 package by.epam.learn.task2;
 
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-
+//Ввести число от 1 до 12. Вывести на консоль название месяца, соответствующего данному числу.
+// Осуществить проверку корректности ввода чисел
 public class Task5 {
 
-    static class Month {
-        private int number;
-        private int a;
-        static boolean proceed;
+    static Scanner scanner = new Scanner(System.in);
+    int inputNumber;
+    static boolean proceed;
 
-        public void setNumber(int a) {
-            if ( a < 1 || a > 13) {
-                System.out.println("Please, make sure you entered correct number");
-            } else {
-                number = a;
-                proceed = true;
-            }
+    private static int parseInt(String input, Scanner scanner) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            System.out.println("Please check your input");
+            return parseInt(scanner.nextLine(), scanner);
         }
-
-        public int getNumber() {
-            return number;
-        }
-
     }
-    public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        Month month = new Month();
-        month.setNumber(Integer.parseInt(reader.readLine()));
+
+    private void setInputNumber(int inputNumber) {
+        while (inputNumber < 1 || inputNumber > 12) {
+            System.out.println("Please make sure you entered correct number");
+            inputNumber = parseInt(scanner.nextLine(), scanner);
+        }
+        this.inputNumber = inputNumber - 1;
+        proceed = true;
+    }
+
+    private int getInputNumber() {
+        return inputNumber;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Please input the number corresponding to the month (from 1 to 12)");
+        Task5 task = new Task5();
+        task.setInputNumber(parseInt(scanner.nextLine(), scanner));
 
         List<String> months = new ArrayList<>();
         months.add("January");
@@ -48,8 +53,8 @@ public class Task5 {
         months.add("November");
         months.add("December");
 
-        if (Month.proceed) {
-            System.out.println(months.get(month.getNumber()));
+        if (proceed) {
+            System.out.println("The month you have chosen is " + months.get(task.getInputNumber()));
         }
     }
 }
