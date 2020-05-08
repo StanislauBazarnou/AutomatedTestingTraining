@@ -1,4 +1,4 @@
-package Task_3_Java_Classes.src.main.java.by.epam.learn.main.task3;
+package by.epam.learn.main.task3;
 
 import java.time.LocalDate;
 
@@ -137,5 +137,28 @@ public class Student {
         this.setGroup(group);
     }
 
+    public Student(int id, String surname, String name, LocalDate birthday, String address, String faculty,
+                   int course, String group) {
+        this.id = id;
+        this.surname = surname;
+        this.name = name;
+        this.birthday = birthday;
+        this.address = address;
+        this.faculty = faculty;
+        this.course = course;
+        this.group = group;
+    }
 
+    public Student(int id, String surname, String name, String middleName, LocalDate birthday, String address,
+                   String faculty, int course, String group) {
+        this.id = id;
+        this.surname = surname;
+        this.name = name;
+        this.middleName = middleName;
+        this.birthday = birthday;
+        this.address = address;
+        this.faculty = faculty;
+        this.course = course;
+        this.group = group;
+    }
 }
