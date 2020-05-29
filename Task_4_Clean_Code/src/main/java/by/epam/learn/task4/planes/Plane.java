@@ -2,9 +2,9 @@ package by.epam.learn.task4.planes;
 
 import java.util.Objects;
 
-abstract public class Plane {
-    String model;
-    Characteristic characteristic;
+public abstract class Plane {
+    private String model;
+    private Characteristic characteristic;
 
     public Plane(String model, Characteristic characteristic) {
         this.model = model;
