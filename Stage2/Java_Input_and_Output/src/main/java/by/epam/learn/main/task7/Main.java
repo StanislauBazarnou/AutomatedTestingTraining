@@ -5,6 +5,7 @@ public class Main {
         int i = 1;
         for(String element : args) {
             System.out.println("Element " + i++ + " is " + element);
+            System.out.println("Wow");
         }
     }
 }
